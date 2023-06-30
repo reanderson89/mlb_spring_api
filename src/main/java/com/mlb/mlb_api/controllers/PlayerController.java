@@ -23,7 +23,6 @@ public class PlayerController {
     @GetMapping
     public ResponseEntity<Iterable<Player>> findAllPlayers(){
         return ResponseEntity.ok(playerService.findAllPlayers());
-//        return ResponseEntity.status(HttpStatus.OK).body(playerService.findAllPlayers());
     }
 
     @GetMapping("/{id}")
