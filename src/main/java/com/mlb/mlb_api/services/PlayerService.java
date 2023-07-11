@@ -1,7 +1,10 @@
 package com.mlb.mlb_api.services;
 
 import com.mlb.mlb_api.entities.Player;
+import com.mlb.mlb_api.entities.Team;
 import com.mlb.mlb_api.repositories.PlayerRepository;
+import jakarta.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,8 +21,13 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
+    @Transactional
     public Iterable<Player> findAllPlayers(){
-        return playerRepository.findAll();
+        Iterable<Player> allPlayers = playerRepository.findAll();
+        for (Player player : allPlayers) {
+            Hibernate.initialize(player.getCurrentTeam());
+        }
+        return allPlayers;
     }
 
     public Player getPlayerById(Integer id){
@@ -67,11 +75,16 @@ public class PlayerService {
             responseMap.put("Message", "Player not found with id: " + id);
             return responseMap;
         }
-
+        playerRepository.deleteById(id);
         responseMap.put("wasDeleted", true);
         responseMap.put("playerInfo", optionalPlayer.get());
 
         return responseMap;
+    }
+
+    public void handlePlayerEvent(Player player, Team team){
+        player.setCurrentTeam(team);
+        playerRepository.save(player);
     }
 
 }
