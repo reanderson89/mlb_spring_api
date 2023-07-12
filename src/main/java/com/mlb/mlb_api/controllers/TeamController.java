@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/teams")
+@RequestMapping("/api/teams")
 public class TeamController {
 
     private final TeamService teamService;
