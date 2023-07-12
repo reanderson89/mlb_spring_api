@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/api/events")
 public class EventController {
 
     private final EventService eventService;

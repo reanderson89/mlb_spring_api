@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/players")
+@RequestMapping("/api/players")
 public class PlayerController {
 
     private final PlayerService playerService;
