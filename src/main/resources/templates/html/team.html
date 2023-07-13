@@ -34,26 +34,25 @@
         <form id="team-form" class="w-50 mx-auto">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
             </div>
             <div class="form-group">
                 <label for="age">Location</label>
-                <input type="number" class="form-control" id="age" placeholder="Enter age">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
         <!-- Table -->
         <div class="mt-5">
-            <table class="table table-striped" id="team-table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Location</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody  id="team-table">
                     <!-- Rows will be populated here -->
                 </tbody>
             </table>
@@ -63,5 +62,6 @@
     <!-- Include Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/team.js"></script>
 </body>
 </html>

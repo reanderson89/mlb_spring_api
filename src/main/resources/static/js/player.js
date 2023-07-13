@@ -25,10 +25,9 @@ const displayPlayers = async () => {
   players.forEach((player) => {
     // Step1: create element
     let newRow = document.createElement("tr");
-
+    newRow.setAttribute("data-id", player.id)
     // Step2: give it content
     newRow.innerHTML = `
-    <td>${player.id}</td>
     <td>${player.name}</td>
     <td>${player.age}</td>
     <td>${player.yearsOfExperience}</td>

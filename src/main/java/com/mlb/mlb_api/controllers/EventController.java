@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
@@ -28,6 +29,11 @@ public class EventController {
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEventById(@PathVariable Integer id){
         return ResponseEntity.ok(eventService.getEventById(id));
+    }
+
+    @GetMapping("/names")
+    public List<HashMap<String, String>> findAll() {
+        return eventService.findAllWithPlayerAndTeamNames();
     }
 
     @PostMapping
